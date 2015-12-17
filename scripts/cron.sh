@@ -1,7 +1,4 @@
 #!/bin/bash
-
-set -eu
-
 pushd ~/code/hiphop-links &>/dev/null
 . env/bin/activate &>/dev/null
 hiphop-generate --title="hiphop links" --outfile="hiphop.html" ~/.weechat/logs/irc.bitlbee.#hiphop.weechatlog
