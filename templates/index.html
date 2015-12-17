@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans%7CDroid+Sans+Mono" type="text/css" rel="stylesheet">
+    <link href="./hiphop.css" type="text/css" rel="stylesheet">
+    <title>hiphop links</title>
+  </head>
+  <body>
+    {% for link in links %}
+    <div>
+      <span class="when">{{ link[0] }}</span>
+      <span class="who">{{ link[1] }}</span>
+      <a href="{{link[2]}}">{{link[2]}}</a>
+    </div>
+    {% endfor %}
+  </body>
+</html>
