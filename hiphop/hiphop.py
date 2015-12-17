@@ -11,7 +11,7 @@ REGEXES = [
 ]
 
 
-def generate(input_file, output_file):
+def generate(title, input_file, output_file):
     links = []
     for line in input_file:
         for r in REGEXES:
@@ -32,7 +32,7 @@ def generate(input_file, output_file):
 
     template_env = jinja2.Environment(loader=jinja2.FileSystemLoader('templates/'))
     template = template_env.get_template('index.html')
-    output_file.write(template.render(links=links))
+    output_file.write(template.render(links=links, title=title))
 
 
 def main():
@@ -42,8 +42,8 @@ def main():
     parser.add_argument('logfile')
     args = parser.parse_args()
     with open(args.logfile) as logfile:
-        with open(outfile, 'w') as outfile:
-            generate(logfile, outfile)
+        with open(args.outfile, 'w') as outfile:
+            generate(title, logfile, outfile)
 
 
 if __name__ == '__main__':
