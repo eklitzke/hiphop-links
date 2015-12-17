@@ -37,10 +37,12 @@ def generate(input_file, output_file):
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument('--title', default='hiphop links')
+    parser.add_argument('--outfile', default='index.html')
     parser.add_argument('logfile')
     args = parser.parse_args()
     with open(args.logfile) as logfile:
-        with open('hiphop.html', 'w') as outfile:
+        with open(outfile, 'w') as outfile:
             generate(logfile, outfile)
 
 
