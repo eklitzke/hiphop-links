@@ -30,7 +30,8 @@ def generate(title, input_file, output_file):
 
     links.reverse()
 
-    template_env = jinja2.Environment(loader=jinja2.FileSystemLoader('templates/'))
+    template_env = jinja2.Environment(loader=jinja2.FileSystemLoader('templates/'),
+                                      autoescape=True)
     template = template_env.get_template('index.html')
     output_file.write(template.render(links=links, title=title))
 
