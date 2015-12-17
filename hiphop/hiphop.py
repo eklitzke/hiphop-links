@@ -14,8 +14,6 @@ REGEXES = [
 def generate(input_file, output_file):
     links = []
     for line in input_file:
-        if 'Link' in line:
-            continue
         for r in REGEXES:
             m = r.search(line)
             if m:
@@ -24,6 +22,10 @@ def generate(input_file, output_file):
                     continue
                 when, who = m2.groups()
                 who = who.lstrip('@')
+                if who == 'Link':
+                    continue
+                if who == '--':
+                    continue
                 links.append((when, who, m.groups()[0]))
 
     links.reverse()
