@@ -43,7 +43,7 @@ def main():
     args = parser.parse_args()
     with open(args.logfile) as logfile:
         with open(args.outfile, 'w') as outfile:
-            generate(title, logfile, outfile)
+            generate(args.title, logfile, outfile)
 
 
 if __name__ == '__main__':
