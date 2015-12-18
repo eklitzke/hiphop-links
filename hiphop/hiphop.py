@@ -12,11 +12,13 @@ REGEXES = [
 
 
 def generate(title, input_file, output_file):
+    seen = set()  # because things are relogged after restarting bitlbee
     links = []
     for line in input_file:
         for r in REGEXES:
             m = r.search(line)
             if m:
+                link = m.groups()[0]
                 m2 = META_RE.match(line)
                 if not m2:
                     continue
@@ -26,7 +28,12 @@ def generate(title, input_file, output_file):
                     continue
                 if who == '--':
                     continue
-                links.append((when, who, m.groups()[0]))
+                key = (who, link)
+                if key in seen:
+                    continue
+                else:
+                    seen.add(key)
+                    links.append((when, who, link))
 
     links.reverse()
 
