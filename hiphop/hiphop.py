@@ -8,6 +8,7 @@ REGEXES = [
     re.compile(r'\b(https?://soundcloud.com\S+)'),
     re.compile(r'\b(https?://www.youtube.com\S+)'),
     re.compile(r'\b(https?://open.spotify.com\S+)'),
+    re.compile(r'\b(https?://hypem.com\S+)'),
 ]
 
 
