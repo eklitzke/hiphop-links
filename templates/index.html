@@ -10,12 +10,19 @@
       links are updated approximately once a minute; you can find the
       code <a href="https://github.com/eklitzke/hiphop-links">here</a>
     </div>
-    {% for link in links %}
-    <div>
-      <span class="when">{{ link[0] }}</span>
-      <span class="who">{{ link[1] }}</span>
-      <a href="{{link[2]}}">{{link[2]}}</a>
-    </div>
-    {% endfor %}
+    <table>
+      <tr>
+        <td class="bold">when (utc)</td>
+        <td class="bold">who</td>
+        <td class="bold">what</td>
+      </tr>
+      {% for link in links %}
+      <tr>
+        <td>{{ link[0] }}</td>
+        <td class="bold">{{ link[1] }}</td>
+        <td><a href="{{link[2]}}">{{link[2]}}</a></td>
+      </tr>
+      {% endfor %}
+    </table>
   </body>
 </html>
