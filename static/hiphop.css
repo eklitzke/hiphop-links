@@ -14,5 +14,5 @@ td {
 }
 
 .bold { font-weight: bold; }
-.comment { color: #555; }
+.comment { color: #555; margin: 1em; }
 tr:nth-child(even) { background: #eee5f4; }
