@@ -16,4 +16,4 @@ I've written a couple of blog posts about how my Hipchat setup works,
 [here's another](https://eklitzke.org/bitlbee-accounts).
 
 The scripts in this repo simply scan my IRC client logs for links matching
-particular regular expressions and then generate HTML pages from that.q
+particular regular expressions and then generate HTML pages from that.
