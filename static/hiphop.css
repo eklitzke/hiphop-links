@@ -5,6 +5,6 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 body { margin: 1em; font-family: 'Open Sans', sans-serif; margin-left: auto; margin-right: auto; text-align: justify; text-justify: inter-word; font-size: large; line-height: 130%; }
 h1,h2,h3,h4 { font-weight: bold; }
 
-.when { margin-left: 1em; width: 5em; }
-.who {margin-left: 1em; font-weight: bold; }
-a { margin-left: 1em; }
+td { padding-left: 1em; }
+.bold { font-weight: bold; }
+tr:nth-child(even) { background: #eee5f4; }
