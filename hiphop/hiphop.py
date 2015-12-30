@@ -12,6 +12,7 @@ REGEXES = [
     re.compile(r'\b(https?://hypem.com\S+)'),
 ]
 
+# top secret
 MANGLE = frozenset([
     'SpencerFang',
 ])
@@ -39,7 +40,7 @@ def generate(title, input_file, output_file):
                     continue
                 else:
                     if who in MANGLE:
-                        who = hashlib.sha1(who).hexdigest()
+                        who = hashlib.sha1(who).hexdigest()[:8]
                     seen.add(key)
                     links.append((when, who, link))
 
