@@ -1,4 +1,5 @@
 import argparse
+import hashlib
 import jinja2
 import re
 
@@ -10,6 +11,10 @@ REGEXES = [
     re.compile(r'\b(https?://open.spotify.com\S+)'),
     re.compile(r'\b(https?://hypem.com\S+)'),
 ]
+
+MANGLE = frozenset([
+    'SpencerFang',
+])
 
 
 def generate(title, input_file, output_file):
@@ -33,13 +38,16 @@ def generate(title, input_file, output_file):
                 if key in seen:
                     continue
                 else:
+                    if who in MANGLE:
+                        who = hashlib.sha1(who).hexdigest()
                     seen.add(key)
                     links.append((when, who, link))
 
     links.reverse()
 
-    template_env = jinja2.Environment(loader=jinja2.FileSystemLoader('templates/'),
-                                      autoescape=True)
+    template_env = jinja2.Environment(
+        loader=jinja2.FileSystemLoader('templates/'),
+        autoescape=True)
     template = template_env.get_template('index.html')
     output_file.write(template.render(links=links, title=title))
 
