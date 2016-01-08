@@ -21,7 +21,11 @@
       <tr>
         <td>{{ link[0] }}</td>
         <td class="bold">{{ link[1] }}</td>
-        <td><a href="{{link[2]}}">{{link[2]}}</a></td>
+        {% if link[3] %}
+          {{ link[3]|safe }}
+        {% else %}
+          <td><a href="{{link[2]}}">{{link[2]}}</a></td>
+        {% endif %}
       </tr>
       {% endfor %}
     </table>

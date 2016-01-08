@@ -2,11 +2,16 @@ import argparse
 import hashlib
 import jinja2
 import re
+import soundcloud
+
+SOUNDCLOUD_CLIENT = soundcloud.Client(client_id='056404d63c00d9148ccc8b8191717482')
 
 META_RE = re.compile(r'^(\d+-\d+-\d+ \d+:\d+:\d+)\s+(\S+)')
 
+SOUNDCLOUD_REGEX = re.compile(r'\b(https?://soundcloud.com\S+)')
+
 REGEXES = [
-    re.compile(r'\b(https?://soundcloud.com\S+)'),
+    SOUNDCLOUD_REGEX,
     re.compile(r'\b(https?://www.youtube.com\S+)'),
     re.compile(r'\b(https?://open.spotify.com\S+)'),
     re.compile(r'\b(https?://hypem.com\S+)'),
@@ -42,7 +47,10 @@ def generate(title, input_file, output_file):
                     if who in MANGLE:
                         who = hashlib.sha1(who).hexdigest()[:8]
                     seen.add(key)
-                    links.append((when, who, link))
+                    oembed_link = None
+                    if SOUNDCLOUD_REGEX.match(link):
+                        oembed = SOUNDCLOUD_CLIENT.get('/oembed', url=link, width='100%', height='166' ).html
+                    links.append((when, who, link, oembed_link))
 
     links.reverse()
 

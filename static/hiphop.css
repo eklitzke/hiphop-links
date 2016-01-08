@@ -16,3 +16,8 @@ td {
 .bold { font-weight: bold; }
 .comment { color: #555; margin: 1em; }
 tr:nth-child(even) { background: #eee5f4; }
+
+iframe {
+  height: 160px;
+  width: 100%;
+}
