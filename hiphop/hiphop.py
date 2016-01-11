@@ -50,10 +50,7 @@ def generate(title, input_file, output_file):
                     seen.add(key)
                     oembed_link = None
                     if SOUNDCLOUD_REGEX.match(link):
-                        try:
-                            oembed = SOUNDCLOUD_CLIENT.get('/oembed', url=link, width='100%', height='166' ).html
-                        except:
-                            continue
+                        oembed = SOUNDCLOUD_CLIENT.get('/oembed', url=link, width='100%', height='166' ).html
                     links.append((when, who, link, oembed_link))
 
     links.reverse()
